@@ -21,12 +21,44 @@ public class Product {
         return code;
     }
 
-    public int getColor() {
+    public int getColorNumber() {
         return color;
     }
 
-    public int getSize() {
+    public String getColorString() {
+        switch (this.color) {
+            case 1:
+                return "blue";
+            case 2:
+                return "red";
+            case 3:
+                return "yellow";
+            default:
+                return "no color";
+        }
+    }
+
+    public int getSizeNumber() {
         return size;
+    }
+
+    public String getSizeString(){
+        switch (this.size) {
+            case 1:
+                return "XS";
+            case 2:
+                return "S";
+            case 3:
+                return "M";
+            case 4:
+                return "L";
+            case 5:
+                return "XL";
+            case 6:
+                return "XXL";
+            default:
+                return "Invalid Size";
+        }
     }
 
     public double getPrice() {
