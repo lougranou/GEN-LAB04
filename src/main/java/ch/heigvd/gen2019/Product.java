@@ -21,8 +21,21 @@ public class Product {
         return code;
     }
 
-    public int getColor() {
+    public int getColorNumber() {
         return color;
+    }
+
+    public String getColorString() {
+        switch (this.color) {
+            case 1:
+                return "blue";
+            case 2:
+                return "red";
+            case 3:
+                return "yellow";
+            default:
+                return "no color";
+        }
     }
 
     public int getSizeNumber() {
