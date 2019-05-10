@@ -4,14 +4,14 @@ public class Product {
     public static final int SIZE_NOT_APPLICABLE = -1;
     private String code;
     private int color;
-    private int size;
+    private Size size;
     private double price;
     private String currency;
 
     public Product(String code, int color, int size, double price, String currency) {
         this.code = code;
         this.color = color;
-        this.size = size;
+        this.size = new Size(size);
         this.price = price;
         this.currency = currency;
     }
@@ -25,7 +25,11 @@ public class Product {
     }
 
     public int getSize() {
-        return size;
+        return this.size.getSize();
+    }
+
+    public String getSizeAsString() {
+        return this.size.getSizeAstring();
     }
 
     public double getPrice() {
