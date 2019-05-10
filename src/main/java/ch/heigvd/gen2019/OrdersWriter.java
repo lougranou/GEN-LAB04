@@ -29,9 +29,7 @@ public class OrdersWriter {
                 sb.append("\", ");
 
                 if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-                    sb.append("\"size\": \"");
-                    sb.append(getSizeFor(product));
-                    sb.append("\", ");
+                    addProductSize(sb, product);
                 }
 
                 sb.append("\"price\": ");
@@ -56,6 +54,13 @@ public class OrdersWriter {
 
         return sb.append("]}").toString();
     }
+
+    private void addProductSize(StringBuffer sb, Product product) {
+        sb.append("\"size\": \"");
+        sb.append(getSizeFor(product));
+        sb.append("\", ");
+    }
+
 
     private String getSizeFor(Product product) {
         switch (product.getSize()) {
