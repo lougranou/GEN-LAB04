@@ -1,5 +1,7 @@
 package ch.heigvd.gen2019;
 
+import ch.heigvd.gen2019.size.NoSize;
+
 import java.util.List;
 
 public class OrdersWriter {
@@ -46,10 +48,10 @@ public class OrdersWriter {
         sb.append(product.getCode());
         sb.append("\", ");
         sb.append("\"color\": \"");
-        sb.append(getColorFor(product));
+        sb.append(product.getColor());
         sb.append("\", ");
 
-        if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
+        if (product.getSize().getClass() != NoSize.class) {
             appendProductSize(sb, product);
         }
 
@@ -63,20 +65,7 @@ public class OrdersWriter {
 
     private void appendProductSize(StringBuffer sb, Product product) {
         sb.append("\"size\": \"");
-        sb.append(product.getSizeAsString());
+        sb.append(product.getSize().toString());
         sb.append("\", ");
-    }
-
-    private String getColorFor(Product product) {
-        switch (product.getColor()) {
-            case 1:
-                return "blue";
-            case 2:
-                return "red";
-            case 3:
-                return "yellow";
-            default:
-                return "no color";
-        }
     }
 }

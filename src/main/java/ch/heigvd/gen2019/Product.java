@@ -1,17 +1,20 @@
 package ch.heigvd.gen2019;
 
+import ch.heigvd.gen2019.color.Color;
+import ch.heigvd.gen2019.size.Size;
+
 public class Product {
     public static final int SIZE_NOT_APPLICABLE = -1;
     private String code;
-    private int color;
+    private Color color;
     private Size size;
     private double price;
     private String currency;
 
-    public Product(String code, int color, int size, double price, String currency) {
+    public Product(String code, Color color, Size size, double price, String currency) {
         this.code = code;
         this.color = color;
-        this.size = new Size(size);
+        this.size = size;
         this.price = price;
         this.currency = currency;
     }
@@ -20,16 +23,12 @@ public class Product {
         return code;
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public int getSize() {
-        return this.size.getSize();
-    }
-
-    public String getSizeAsString() {
-        return this.size.getSizeAstring();
+    public Size getSize() {
+        return this.size;
     }
 
     public double getPrice() {

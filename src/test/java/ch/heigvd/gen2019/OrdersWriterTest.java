@@ -1,13 +1,15 @@
 package ch.heigvd.gen2019;
 
+import ch.heigvd.gen2019.color.*;
+import ch.heigvd.gen2019.size.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrdersWriterTest {
     List<Order> orders = new ArrayList<>();
@@ -40,7 +42,7 @@ public class OrdersWriterTest {
 
     @Test
     public void OneOrderWithOneProduct() {
-        order111.AddProduct(new Product("Shirt", 1, 3, 2.99, "TWD"));
+        order111.AddProduct(new Product("Shirt", new Blue(), new M(), 2.99, "TWD"));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Shirt\", \"color\": \"blue\", \"size\": \"M\", \"price\": 2.99, \"currency\": \"TWD\"}");
         assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContents());
@@ -48,7 +50,7 @@ public class OrdersWriterTest {
 
     @Test
     public void OneOrderWithOneProductNoSize() {
-        order111.AddProduct(new Product("Pot", 2, -1, 16.50, "SGD"));
+        order111.AddProduct(new Product("Pot", new Red(), new NoSize(), 16.50, "SGD"));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Pot\", \"color\": \"red\", \"price\": 16.5, \"currency\": \"SGD\"}");
         assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContents());
