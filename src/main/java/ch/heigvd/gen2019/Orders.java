@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
-
     private List<Order> orders = new ArrayList<Order>();
 
     public void AddOrder(Order order) {
@@ -15,7 +14,7 @@ public class Orders {
         return orders.size();
     }
 
-    public Order getOrder(int index) {
-        return orders.get(index);
+    public Order getOrder(int i) {
+        return orders.get(i);
     }
 }

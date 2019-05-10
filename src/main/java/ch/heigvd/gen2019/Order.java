@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-
     private List<Product> products = new ArrayList<Product>();
     private int id;
 
@@ -20,8 +19,8 @@ public class Order {
         return products.size();
     }
 
-    public Product getProduct(int index) {
-        return products.get(index);
+    public Product getProduct(int j) {
+        return products.get(j);
     }
 
     public void AddProduct(Product product) {
