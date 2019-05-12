@@ -21,8 +21,7 @@ public class OrdersWriter {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         /* For every order */
-        for (int i = 0; i < orders.size(); i++) {
-            Order order = orders.get(i);
+        for (Order order : orders) {
             appendOrderID(sb, order.getOrderId());
             sb.append("\"products\": [");
 
