@@ -13,14 +13,20 @@ public class OrdersWriter {
         this.orders = orders;
     }
 
+    /**
+     * Write an order in a JSON format
+     * @return a string of the order formatted in JSON
+     */
     public String getContents() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
+        /* For every order */
         for (int i = 0; i < orders.size(); i++) {
             Order order = orders.get(i);
             appendOrderID(sb, order.getOrderId());
             sb.append("\"products\": [");
 
+            /* For every product */
             for (int j = 0; j < order.getProductsCount(); j++) {
                 Product product = order.getProduct(j);
                 appendProductCode(sb, product.getCode());
@@ -35,6 +41,7 @@ public class OrdersWriter {
                 appendProductCurrency(sb, product.getCurrency());
             }
 
+            /* Removes the last 2 characters if there is not product */
             if (order.getProductsCount() > 0) {
                 sb.delete(sb.length() - 2, sb.length());
             }
@@ -42,6 +49,7 @@ public class OrdersWriter {
             sb.append("]}, ");
         }
 
+        /* Removes the last 2 characters if there where products */
         if (orders.size() > 0) {
             sb.delete(sb.length() - 2, sb.length());
         }
