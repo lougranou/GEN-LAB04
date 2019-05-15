@@ -1,6 +1,7 @@
 package ch.heigvd.gen2019;
 
 import ch.heigvd.gen2019.color.Color;
+import ch.heigvd.gen2019.size.NoSize;
 import ch.heigvd.gen2019.size.Size;
 
 public class Product {
@@ -18,23 +19,23 @@ public class Product {
         this.currency = currency;
     }
 
-    public String getCode() {
-        return code;
-    }
+    /**
+     * Get current product in JSON format
+     * @return a string of the product formatted in JSON
+     */
+    public String getAsJson() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("{\"code\": \"").append(this.code).append("\", ");
+        sb.append("\"color\": \"").append(this.color).append("\", ");
 
-    public Color getColor() {
-        return color;
-    }
+        /* Append a size only if the product has a Size */
+        if (this.size.getClass() != NoSize.class) {
+            sb.append("\"size\": \"").append(this.size).append("\", ");
+        }
 
-    public Size getSize() {
-        return this.size;
-    }
+        sb.append("\"price\": ").append(this.price).append(", ");
+        sb.append("\"currency\": \"").append(this.currency).append("\"}, ");
 
-    public double getPrice() {
-        return price;
-    }
-
-    public String getCurrency() {
-        return currency;
+        return sb.toString();
     }
 }
